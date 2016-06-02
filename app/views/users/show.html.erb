@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <div class="profile-info">
+        <h1>Profile</h1>
+        <p><%= @user.username %></p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+      <div class="books-list">
+        <h3>My Books</h3>
+        <% @user.books.each do |book| %>
+          <p><%= book.title %> - <%= book.author %></p>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="books-list">
+          <h3>Borrowed Books</h3>
+            <p>No borrowed books</p>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="books-list">
+            <h3>Given Books</h3>
+            <p>No given books</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
