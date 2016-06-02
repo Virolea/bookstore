@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resource :books
+  resources :books, only: [:new, :create, :edit, :update]
 end

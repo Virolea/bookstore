@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :books
 
-  validates :username, uniqueness:true
+  validates :username, uniqueness: true
 end
