@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <%= @user.username %>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <% @user.books.each do |book| %>
+        <p><%= book.title %> - <%= book.author %></p>
+      <% end %>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <p>No borrowed books</p>
+        </div>
+        <div class="col-xs-6">
+          <p>No given books</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
