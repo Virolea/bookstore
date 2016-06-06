@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :borrowings, class_name: "Loan"
 
   validates :username, uniqueness: true
+  validates :username, presence: true
 end
