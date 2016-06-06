@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :user
-  has_many :loans
+  has_many :loans, dependent: :destroy
 
   validates :title, :author, presence: true
 
