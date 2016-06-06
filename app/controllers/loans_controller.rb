@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   before_action :find_book, only: [:new, :create]
 
   def new
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
     @loan = Loan.new
     authorize @loan
   end

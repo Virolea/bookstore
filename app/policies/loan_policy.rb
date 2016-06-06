@@ -10,6 +10,6 @@ class LoanPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    !record.book.loaned? || record.book.user != user
   end
 end
