@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :books
+  has_many :loans, through: :books
+  has_many :borrowings, class_name: "Loan"
 
   validates :username, uniqueness: true
 end
