@@ -10,13 +10,27 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new
     @loan.book = @book
-    @loan.user = User.find(loan_params[:user_id])
+    @loan.user = User.find_by_id(loan_params[:user_id])
     @loan.status = "loaned"
     authorize @loan
     if @loan.save
+      flash[:notice] = "#{@loan.book.title} loaned to #{@loan.user.username}"
       redirect_to :root
     else
+      @users = User.where.not(id: current_user.id)
       render :new
+    end
+  end
+
+  def update
+    @loan = Loan.find(params[:id])
+    authorize @loan
+    if @loan.update(status: "returned")
+      flash[:notice] = "#{@loan.book.title} returned to #{@loan.book.user.username}"
+      redirect_to :root
+    else
+      flash[:error] = "Impossible to return book"
+      redirect_to :root
     end
   end
 

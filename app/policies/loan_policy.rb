@@ -12,4 +12,8 @@ class LoanPolicy < ApplicationPolicy
   def create?
     !record.book.loaned? || record.book.user != user
   end
+
+  def update?
+    record.status == "loaned" && record.user == user
+  end
 end

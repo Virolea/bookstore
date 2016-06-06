@@ -19,7 +19,7 @@
         <div class="col-xs-6">
           <div class="books-list">
           <h3>Borrowed Books</h3>
-            <% @user.borrowings.each do |borrowing| %>
+            <% @user.borrowings.where(status: "loaned").each do |borrowing| %>
               <%= render "borrowed_book", borrowing: borrowing %>
             <% end %>
           </div>
@@ -28,7 +28,7 @@
         <div class="col-xs-6">
           <div class="books-list">
             <h3>Loaned Books</h3>
-            <% @user.loans.each do |loan| %>
+            <% @user.loans.where(status: "loaned").each do |loan| %>
               <%= render "loaned_book", loan: loan %>
             <% end %>
           </div>

@@ -1,4 +1,4 @@
 <div>
   <h4><%= borrowing.book.title %></h4>
-  <p>Borrowed from <%= borrowing.book.user.username %></p>
+  <p>Borrowed from <%= borrowing.book.user.username %> - <%= link_to "Return Book", book_loan_path(borrowing.book, borrowing), method: :put %></p>
 </div>
