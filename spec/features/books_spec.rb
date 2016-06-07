@@ -11,12 +11,7 @@ feature "Books Management" do
   scenario "Allow logged in user to add a book" do
     # Logging in user
     user = create(:user)
-
-    visit root_path
-    click_link "Login"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
+    sign_in(user)
 
     click_link "Add a New Book"
     fill_in "Title", with: "Title"
