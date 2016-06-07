@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates)
+App repository of [The Bookstore](http://thawing-harbor-39036.herokuapp.com/)
