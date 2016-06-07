@@ -14,6 +14,21 @@ feature "Users accounts" do
     expect(page).to have_content(success_message)
   end
 
+  scenario "Ensure username uniqueness" do
+    create(:user, username: "jdoe")
+
+    visit root_path
+    click_link "Sign up"
+    fill_in "Email", with: "jdoe@gmail.com"
+    fill_in "Username", with: "jdoe"
+    fill_in "Password", with: "azertyuiop", match: :prefer_exact
+    fill_in "Password confirmation", with: "azertyuiop", match: :prefer_exact
+    click_button "Sign up"
+
+    expect(page).to have_content("Please review the problems below:")
+    expect(page).to have_content("has already been taken")
+  end
+
   scenario "Log user in" do
     user = create(:user)
 
