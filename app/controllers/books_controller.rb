@@ -11,6 +11,7 @@ class BooksController < ApplicationController
     @book.user = current_user
     authorize @book
     if @book.save
+      flash[:notice] = "Successfully added #{@book.title} to your collection"
       redirect_to root_path
     else
       render :new
