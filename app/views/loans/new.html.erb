@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>Loan "<%= @book.title %>"</h1>
       <%= simple_form_for([@book, @loan]) do |f| %>
         <%= f.input :user_id, collection: @users.map { |user| [user.username, user.id] }, prompt: "Select a User" %>
-        <%= f.submit %>
+        <%= f.submit "Loan book", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
