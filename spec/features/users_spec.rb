@@ -3,7 +3,6 @@ require "rails_helper"
 feature "Users accounts" do
   scenario "Creating user account" do
     visit root_path
-    click_link "Login"
     click_link "Sign up"
     fill_in "Email", with: "jdoe@gmail.com"
     fill_in "Username", with: "jdoe"
