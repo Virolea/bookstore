@@ -10,7 +10,7 @@ class LoanPolicy < ApplicationPolicy
   end
 
   def create?
-    !record.book.loaned? && record.book.user == user
+    !record.book.loaned? && record.user != user
   end
 
   def update?
