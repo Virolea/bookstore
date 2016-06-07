@@ -8,14 +8,7 @@ feature "Loans Management" do
     book.user = loaner
     book.save
 
-    # logging in loaner
-    visit root_path
-    click_link "Login"
-    fill_in "Email", with: loaner.email
-    fill_in "Password", with: loaner.password
-    click_button "Log in"
-
-    # loaning book
+    sign_in(loaner)
     click_link "Loan Book"
     select borrower.username, from: "User"
     click_button "Loan book"
