@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :books, only: [:new, :create, :edit, :update]
+  resources :books, only: [:new, :create] do
+    resources :loans, only: [:new, :create, :update]
+  end
 end

@@ -12,16 +12,4 @@ class BookPolicy < ApplicationPolicy
   def create?
     true
   end
-
-  def edit?
-    destroy?
-  end
-
-  def update?
-    destroy?
-  end
-
-  def destroy?
-    record.user == user
-  end
 end

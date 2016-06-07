@@ -1,0 +1,8 @@
+<p>
+  <%= book.title %> - <%= book.author %> -
+  <% if book.loaned? %>
+    <span class="label label-success">loaned</span>
+  <% else %>
+    <%= link_to "Loan Book", new_book_loan_path(book) %>
+  <% end %>
+</p>

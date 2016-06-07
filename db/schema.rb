@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602192821) do
+ActiveRecord::Schema.define(version: 20160606121306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20160602192821) do
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
+
+  create_table "loans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "loans", ["book_id"], name: "index_loans_on_book_id", using: :btree
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -46,4 +57,6 @@ ActiveRecord::Schema.define(version: 20160602192821) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "books", "users"
+  add_foreign_key "loans", "books"
+  add_foreign_key "loans", "users"
 end
