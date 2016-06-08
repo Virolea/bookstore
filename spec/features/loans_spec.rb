@@ -15,4 +15,23 @@ feature "Loans Management" do
 
     expect(page).to have_content("#{book.title} loaned to #{borrower.username}")
   end
+
+  scenario "Allow users to give back a book" do
+    loaner = create(:user)
+    borrower = create(:user)
+
+    book = build(:book)
+    book.user = loaner
+    book.save
+
+    loan = Loan.new
+    loan.user = borrower
+    loan.book = book
+    loan.status = "loaned"
+    loan.save
+
+    sign_in(borrower)
+    click_link "Return Book"
+    expect(page).to have_content("#{loan.book.title} returned to #{loaner.username}")
+  end
 end
