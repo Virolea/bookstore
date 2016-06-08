@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   before_action :find_book, only: [:new, :create]
 
   def new
-    @users = User.where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).order(username: :asc)
     @loan = Loan.new
     authorize @loan
   end
@@ -17,7 +17,7 @@ class LoansController < ApplicationController
       flash[:notice] = "#{@loan.book.title} loaned to #{@loan.user.username}"
       redirect_to :root
     else
-      @users = User.where.not(id: current_user.id)
+      @users = User.where.not(id: current_user.id).order(username: :asc)
       render :new
     end
   end
